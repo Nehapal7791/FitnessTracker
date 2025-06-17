@@ -104,15 +104,15 @@ const ProgressTracker = () => {
     : { value: Math.abs(weightDiff).toFixed(1), trend: 'up', color: 'text-red-500' };
   
   return (
-    <div className="p-4 bg-gradient-to-br from-white to-orange-50 min-h-screen w-full">
+    <div className="p-4 sm:p-6 lg:p-8 w-full max-w-full mx-auto">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-1 bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Progress Tracker</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-1 bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Progress Tracker</h1>
         <p className="text-orange-600">{format(new Date(), 'MMMM d, yyyy')}</p>
       </div>
       
       {/* Tabs */}
-      <div className="flex space-x-1 bg-gradient-to-r from-orange-100 to-pink-100 p-1 rounded-lg mb-6 shadow-sm">
+      <div className="flex space-x-1 bg-gradient-to-r from-orange-100 to-pink-100 p-1 rounded-lg mb-6 shadow-sm max-w-md mx-auto md:mx-0">
         <button 
           className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${activeTab === 'overview' 
             ? 'bg-white shadow-sm text-orange-600' 
@@ -142,7 +142,7 @@ const ProgressTracker = () => {
       {activeTab === 'overview' && (
         <>
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-lg p-4 border border-orange-100 shadow-sm">
               <div className="flex justify-between items-start">
                 <div>
@@ -180,10 +180,10 @@ const ProgressTracker = () => {
           </div>
           
           {/* Weekly Summary */}
-          <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-lg p-4 mb-6 shadow-md border border-orange-100">
-            <h2 className="font-medium bg-gradient-to-r from-orange-600 to-pink-600 text-transparent bg-clip-text mb-3 text-lg">Weekly Summary</h2>
+          <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-lg p-4 md:p-6 mb-6 shadow-md border border-orange-100">
+            <h2 className="font-medium bg-gradient-to-r from-orange-600 to-pink-600 text-transparent bg-clip-text mb-3 text-lg md:text-xl">Weekly Summary</h2>
             
-            <div className="grid grid-cols-2 gap-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
                 <div className="text-xs text-orange-600 mb-1 font-medium">Workouts</div>
                 <div className="text-xl font-semibold text-orange-800">{weekSummary.totalWorkouts}</div>
@@ -208,8 +208,8 @@ const ProgressTracker = () => {
           
           {/* Daily Comparison */}
           <div className="border border-orange-100 rounded-lg overflow-hidden shadow-md bg-white">
-            <div className="bg-gradient-to-r from-orange-100 to-pink-100 p-4 border-b border-orange-200">
-              <h2 className="font-medium text-orange-800">Today vs. Yesterday</h2>
+            <div className="bg-gradient-to-r from-orange-100 to-pink-100 p-4 md:p-5 border-b border-orange-200">
+              <h2 className="font-medium text-orange-800 md:text-lg">Today vs. Yesterday</h2>
             </div>
             
             <div className="divide-y divide-orange-100">
@@ -266,21 +266,21 @@ const ProgressTracker = () => {
       )}
       
       {activeTab === 'weight' && (
-        <div className="text-center py-12 bg-gradient-to-br from-white to-orange-50 rounded-lg shadow-sm border border-orange-100">
-          <p className="text-orange-600 font-medium">Weight tracking chart will be displayed here</p>
-          <p className="text-sm text-pink-500 mt-3">Feature coming soon</p>
+        <div className="text-center py-12 md:py-24 bg-gradient-to-br from-white to-orange-50 rounded-lg shadow-sm border border-orange-100 max-w-4xl mx-auto">
+          <p className="text-orange-600 font-medium md:text-lg">Weight tracking chart will be displayed here</p>
+          <p className="text-sm md:text-base text-pink-500 mt-3">Feature coming soon</p>
           <div className="mt-6 flex justify-center">
-            <div className="w-32 h-1 bg-gradient-to-r from-orange-300 to-pink-300 rounded-full"></div>
+            <div className="w-32 md:w-48 h-1 md:h-2 bg-gradient-to-r from-orange-300 to-pink-300 rounded-full"></div>
           </div>
         </div>
       )}
       
       {activeTab === 'activity' && (
-        <div className="text-center py-12 bg-gradient-to-br from-white to-pink-50 rounded-lg shadow-sm border border-pink-100">
-          <p className="text-pink-600 font-medium">Activity tracking charts will be displayed here</p>
-          <p className="text-sm text-orange-500 mt-3">Feature coming soon</p>
+        <div className="text-center py-12 md:py-24 bg-gradient-to-br from-white to-pink-50 rounded-lg shadow-sm border border-pink-100 max-w-4xl mx-auto">
+          <p className="text-pink-600 font-medium md:text-lg">Activity tracking charts will be displayed here</p>
+          <p className="text-sm md:text-base text-orange-500 mt-3">Feature coming soon</p>
           <div className="mt-6 flex justify-center">
-            <div className="w-32 h-1 bg-gradient-to-r from-pink-300 to-orange-300 rounded-full"></div>
+            <div className="w-32 md:w-48 h-1 md:h-2 bg-gradient-to-r from-pink-300 to-orange-300 rounded-full"></div>
           </div>
         </div>
       )}

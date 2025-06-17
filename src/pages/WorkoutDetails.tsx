@@ -6,8 +6,8 @@ import { useState } from 'react';
 const mockWorkouts = {
   1: {
     id: 1,
-    title: 'Mathematics',
-    subtitle: 'Chapter 1: Introduction',
+    title: 'Workout Plans',
+    subtitle: 'calculations',
     description: 'Complete workout focused on core strength and cardio.',
     startTime: '11:35',
     endTime: '13:05',
@@ -25,8 +25,8 @@ const mockWorkouts = {
   },
   3: {
     id: 3,
-    title: 'Geography',
-    subtitle: 'Chapter 2: Economy USA',
+    title: 'AddOn Physical Training',
+    subtitle: '',
     description: 'High intensity interval training for maximum fat burn.',
     startTime: '15:10',
     endTime: '16:40',
@@ -88,53 +88,58 @@ const WorkoutDetails = () => {
   return (
     <div className="bg-gradient-to-br from-white to-orange-50 min-h-screen w-full">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-pink-500 text-white p-4 shadow-md">
-        <div className="flex items-center mb-6">
-          <button 
-            onClick={() => navigate(-1)}
-            className="mr-4 p-1 rounded-full hover:bg-white/10 transition-colors"
-          >
-            <ArrowLeftIcon className="w-6 h-6" />
-          </button>
-          <h1 className="text-xl font-semibold">Workout Details</h1>
-        </div>
-        
-        <h2 className="text-2xl font-bold mb-2">{workout.title}</h2>
-        <p className="text-pink-100">{workout.subtitle}</p>
-        
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <ClockIcon className="w-5 h-5 mr-2 text-orange-200" />
-            <span>{workout.duration} min</span>
+      <div className="bg-gradient-to-r from-orange-500 to-pink-500 text-white p-4 sm:p-6 md:p-8 shadow-md">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="flex items-center mb-6">
+            <button 
+              onClick={() => navigate(-1)}
+              className="mr-4 p-1 rounded-full hover:bg-white/10 transition-colors"
+            >
+              <ArrowLeftIcon className="w-6 h-6" />
+            </button>
+            <h1 className="text-xl md:text-2xl font-semibold">Workout Details</h1>
           </div>
-          <div className="flex items-center">
-            <FireIcon className="w-5 h-5 mr-2 text-pink-200" />
-            <span>{workout.calories} cal</span>
+          
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">{workout.title}</h2>
+          <p className="text-pink-100">{workout.subtitle}</p>
+          
+          <div className="mt-4 flex items-center justify-between max-w-xs">
+            <div className="flex items-center">
+              <ClockIcon className="w-5 h-5 mr-2 text-orange-200" />
+              <span>{workout.duration} min</span>
+            </div>
+            <div className="flex items-center">
+              <FireIcon className="w-5 h-5 mr-2 text-pink-200" />
+              <span>{workout.calories} cal</span>
+            </div>
           </div>
         </div>
       </div>
       
       {/* Workout Progress */}
-      <div className="p-4 border-b border-orange-100 bg-white shadow-sm">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-medium text-orange-800">Progress</h3>
-          <span className="text-sm text-pink-600 font-medium">
-            {completedExercises}/{exercises.length} exercises
-          </span>
-        </div>
-        <div className="w-full bg-orange-100 rounded-full h-3">
-          <div 
-            className="bg-gradient-to-r from-orange-400 to-pink-400 h-3 rounded-full shadow-sm" 
-            style={{ width: `${completionPercentage}%` }}
-          ></div>
+      <div className="p-4 sm:p-6 border-b border-orange-100 bg-white shadow-sm">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="font-medium text-orange-800 md:text-lg">Progress</h3>
+            <span className="text-sm md:text-base text-pink-600 font-medium">
+              {completedExercises}/{exercises.length} exercises
+            </span>
+          </div>
+          <div className="w-full bg-orange-100 rounded-full h-3 md:h-4">
+            <div 
+              className="bg-gradient-to-r from-orange-400 to-pink-400 h-3 md:h-4 rounded-full shadow-sm" 
+              style={{ width: `${completionPercentage}%` }}
+            ></div>
+          </div>
         </div>
       </div>
       
       {/* Exercise List */}
-      <div className="p-4">
-        <h3 className="font-medium mb-4 text-xl bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Exercises</h3>
-        
-        <div className="space-y-4">
+      <div className="p-4 sm:p-6 md:p-8">
+        <div className="max-w-screen-xl mx-auto">
+          <h3 className="font-medium mb-4 text-xl md:text-2xl bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Exercises</h3>
+          
+          <div className="space-y-4 md:grid md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-3">
           {exercises.map((exercise) => (
             <div 
               key={exercise.id}
@@ -156,14 +161,17 @@ const WorkoutDetails = () => {
               </div>
             </div>
           ))}
+          </div>
+          
+          {/* Complete Workout Button */}
+          <div className="mt-6 md:mt-8 md:flex md:justify-center">
+            <button 
+              className="w-full md:w-auto md:px-12 py-3 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white rounded-lg font-medium shadow-md transition-colors"
+            >
+              Complete Workout
+            </button>
+          </div>
         </div>
-        
-        {/* Complete Workout Button */}
-        <button 
-          className="w-full py-3 bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white rounded-lg font-medium mt-6 shadow-md transition-colors"
-        >
-          Complete Workout
-        </button>
       </div>
     </div>
   );

@@ -51,17 +51,17 @@ const Layout = ({ children }: LayoutProps) => {
     }
   ];
 
-  const isActive = (path: string) => {
-    if (path === '/' && location.pathname === '/') return true;
-    return location.pathname.startsWith(path) && path !== '/';
-  };
+  // const isActive = (path: string) => {
+  //   if (path === '/' && location.pathname === '/') return true;
+  //   return location.pathname.startsWith(path) && path !== '/';
+  // };
 
   return (
-    <div className="min-h-screen flex bg-white w-full">
+    <div className="min-h-screen flex flex-col bg-white relative">
       {isDesktop && (
         <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white shadow-lg p-4 hidden lg:block overflow-y-auto">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">FitTrack</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Spocademy</h1>
           </div>
 
           <nav className="space-y-2">
@@ -95,9 +95,9 @@ const Layout = ({ children }: LayoutProps) => {
               onClick={() => setIsMobileMenuOpen(true)}
               className="p-2 rounded-full hover:bg-orange-100 focus:outline-none"
             >
-              <Bars3Icon className="w-6 h-6 text-orange-500" />
+              <Bars3Icon className="w-6 h-6 text-white hover:text-orange-600" />
             </button>
-            <h1 className="ml-3 text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">FitTrack</h1>
+            <h1 className="ml-3 text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Spocademy</h1>
           </div>
           <div>
             {/* Additional header icons/actions can go here */}
@@ -110,7 +110,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 z-30" onClick={() => setIsMobileMenuOpen(false)}>
           <div className="fixed inset-y-0 left-0 max-w-xs w-full bg-white shadow-xl z-40" onClick={e => e.stopPropagation()}>
             <div className="p-4 border-b border-gray-200 flex justify-between">
-              <h2 className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">FitTrack</h2>
+              <h2 className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Spocademy</h2>
               <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-full hover:bg-orange-100">
                 <XMarkIcon className="w-6 h-6 text-orange-500" />
               </button>
@@ -140,11 +140,13 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
       )}
 
-      <div className={`flex-1 flex flex-col w-full ${isDesktop ? 'ml-64' : ''}`}>
+      <div className={`flex-1 flex flex-col ${isDesktop ? 'ml-64' : ''} min-h-0`}>
         {/* Main content area */}
-        <main className={`flex-1 ${!isDesktop ? 'pt-16 pb-16' : 'overflow-y-auto h-screen'}`}>
+        <main className={`flex-1 ${!isDesktop ? 'pt-16 pb-16' : 'overflow-y-auto'}`}>
           <div className="w-full h-full">
-            {children}
+            <div className="w-full">
+              {children}
+            </div>
           </div>
         </main>
 

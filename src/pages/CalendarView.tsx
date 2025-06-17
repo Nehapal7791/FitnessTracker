@@ -4,8 +4,6 @@ import {
   ChevronLeftIcon, 
   ChevronRightIcon, 
   EllipsisVerticalIcon, 
-  MapPinIcon, 
-  UserIcon,
   FireIcon,
   ClockIcon
 } from '@heroicons/react/24/outline';
@@ -23,10 +21,10 @@ interface Activity {
   instructor: string;
   type: 'workout' | 'diet' | 'other';
   date: Date;
-  duration?: number; // in minutes
+  duration?: number;  
   calories?: number;
   completed?: boolean;
-  progress?: number; // percentage of completion
+  progress?: number;  
   details?: string[];
 }
 
@@ -99,19 +97,15 @@ const CalendarView = () => {
   const today = startOfToday();
   const [selectedDate, setSelectedDate] = useState(today);
   const [currentWeek, setCurrentWeek] = useState(startOfWeek(today, { weekStartsOn: 1 })); // Start week on Monday
-  
-  // Generate days for current week view
+   
   const weekDays = eachDayOfInterval({
     start: currentWeek,
     end: addDays(currentWeek, 6)
   });
-
-  // Go to previous week
+ 
   const previousWeek = () => {
     setCurrentWeek(prevWeek => addDays(prevWeek, -7));
-  };
-
-  // Go to next week
+  }; 
   const nextWeek = () => {
     setCurrentWeek(prevWeek => addDays(prevWeek, 7));
   };
@@ -119,8 +113,9 @@ const CalendarView = () => {
   const dailyActivities = generateMockActivities(selectedDate);
 
   return (
-    <div className="p-4 sm:p-6 bg-white h-full w-full"> 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+    <div className="p-4 sm:p-6 lg:p-8 w-full mx-auto">
+      <div className="w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">
@@ -148,25 +143,25 @@ const CalendarView = () => {
         <div className="flex items-center justify-between mb-4">
           <button 
             onClick={previousWeek} 
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-full hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50  "
             aria-label="Previous week"
           >
-            <ChevronLeftIcon className="w-5 h-5 text-orange-600" />
+            <ChevronLeftIcon className="w-5 h-5 text-white hover:text-orange-600" />
           </button>
           <h3 className="text-sm font-medium text-gray-700">
             {format(weekDays[0], 'MMMM yyyy')}
           </h3>
           <button 
             onClick={nextWeek} 
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-full hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50  "
             aria-label="Next week"
           >
-            <ChevronRightIcon className="w-5 h-5 text-gray-600" />
+            <ChevronRightIcon className="w-5 h-5 text-white   hover:text-orange-600" />
           </button>
         </div>
         
         {/* Day selector - responsive */}
-        <div className="grid grid-cols-7 gap-1 text-center bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-1 sm:p-2 shadow-md">
+        <div className="grid grid-cols-7 gap-1 sm:gap-2 md:gap-3 text-center bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-1 sm:p-2 md:p-3 shadow-md">
           {weekDays.map((day) => {
             const isSelected = isSameDay(day, selectedDate);
             const isToday = isSameDay(day, today);
@@ -195,18 +190,18 @@ const CalendarView = () => {
       </div>
       
       {/* Tab navigation */}
-      <div className="flex overflow-x-auto border-b border-orange-200 mb-6 pb-px hide-scrollbar">
+      <div className="flex gap-1 md:gap-2 overflow-x-auto border-b border-orange-200 mb-6 pb-px">
         <button className="text-sm font-medium text-orange-600 pb-2 px-4 border-b-2 border-orange-500 whitespace-nowrap">Today</button>
-        <button className="text-sm font-medium text-gray-200 pb-2 px-4 whitespace-nowrap hover:text-orange-700 transition-colors">Upcoming</button>
-        <button className="text-sm font-medium text-gray-200 pb-2 px-4 whitespace-nowrap hover:text-orange-700 transition-colors">Completed</button>
+        <button className="text-sm font-medium text-white-700 pb-2 px-4 whitespace-nowrap hover:text-orange-600 hover:bg-white hover:border-b-2 hover:border-orange-300 transition-colors rounded-lg">Upcoming</button>
+        <button className="text-sm font-medium text-white-700 pb-2 px-4 whitespace-nowrap hover:text-orange-600 hover:bg-white hover:border-b-2 hover:border-orange-300 transition-colors rounded-lg">Completed</button>
         <div className="flex-1"></div>
-        <button className="p-2 hover:bg-orange-100 rounded-full transition-colors">
-          <EllipsisVerticalIcon className="w-5 h-5 text-orange-500" />
+        <button className="p-2 hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50 rounded-full transition-colors">
+          <EllipsisVerticalIcon className="w-5 h-5 text-white hover:text-orange-600" />
         </button>
       </div>
       
       {/* Exercise Highlight Card - Move this outside the component in a real app */}
-      <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-4 mb-6 border border-orange-200 shadow-md">
+      <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-xl p-4 md:p-6 mb-6 border border-orange-200 shadow-md">
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-semibold text-orange-800 text-lg">Today's Focus</h3>
           <div className="flex items-center gap-3">
@@ -222,7 +217,7 @@ const CalendarView = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 mt-4">
           {[
             { name: 'Push-ups', sets: 3, reps: 15, completed: true },
             { name: 'Squats', sets: 4, reps: 12, completed: true },
@@ -237,10 +232,11 @@ const CalendarView = () => {
         </div>
       </div>
        
-      <DailyProgress date={selectedDate} />
-       
-      <h3 className="font-semibold text-gray-800 mt-8 mb-4">Schedule</h3>
-      <div className="space-y-4">
+      {/* Main content area with two-column layout on desktop */}
+      <div className="mt-8 lg:flex lg:gap-6">
+        <div className="lg:w-7/12">
+          <h3 className="font-semibold text-gray-800 mb-4">Schedule</h3>
+          <div className="space-y-4">
         {dailyActivities.length > 0 ? (
           dailyActivities.map(activity => (
             <ActivityCard key={`${activity.id}-${activity.date.getTime()}`} activity={activity} />
@@ -251,6 +247,12 @@ const CalendarView = () => {
             <button className="mt-2 text-sm text-green-600 font-medium hover:text-green-700 transition-colors">+ Add Activity</button>
           </div>
         )}
+          </div>
+        </div>
+        <div className="mt-8 lg:mt-0 lg:w-5/12">
+          <DailyProgress date={selectedDate} />
+        </div>
+        </div>
       </div>
     </div>
   );

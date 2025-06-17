@@ -8,7 +8,7 @@ import Layout from './components/layout/Layout';
 
 function App() {
   return (
-    <Router>
+     <Router>
       <Routes>
         <Route path="/" element={
           <Layout>

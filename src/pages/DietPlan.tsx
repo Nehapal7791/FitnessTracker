@@ -108,7 +108,8 @@ const DietPlan = () => {
   const completionPercentage = (completedMeals / meals.length) * 100;
   
   return (
-    <div className="p-4 sm:p-6 w-full h-full">
+    <div className="p-4 sm:p-6 lg:p-8 w-full mx-auto">
+      <div className="w-full bg-gradient-to-br from-white to-white-700 min-h-screen">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-1 bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Diet Plan</h1>
@@ -116,7 +117,7 @@ const DietPlan = () => {
       </div>
       
       {/* Nutrition Summary */}
-      <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-lg p-4 mb-6 shadow-md">
+      <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-lg p-4 md:p-6 mb-6 shadow-md">
         <h2 className="text-lg font-semibold mb-3 text-orange-800">Daily Nutrition</h2>
         
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -157,7 +158,7 @@ const DietPlan = () => {
       </div>
       
       {/* Water Intake */}
-      <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-4 mb-6 shadow-md">
+      <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-4 md:p-6 mb-6 shadow-md">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-lg font-semibold text-pink-800">Water Intake</h2>
           <span className="text-sm font-medium text-pink-600">{waterIntake}/{targetWater} glasses</span>
@@ -182,8 +183,10 @@ const DietPlan = () => {
         </button>
       </div>
       
-      {/* Meals List */}
-      <div>
+      {/* Main content with two-column layout on desktop */}
+      <div className="lg:flex lg:gap-6">
+        {/* Meals List */}
+        <div className="lg:w-8/12">
         <h2 className="font-semibold mb-4 text-xl bg-gradient-to-r from-orange-500 to-pink-500 text-transparent bg-clip-text">Today's Meals</h2>
         
         <div className="space-y-4">
@@ -224,6 +227,29 @@ const DietPlan = () => {
             </div>
           ))}
         </div>
+      </div>
+        
+        {/* Additional nutritional info or recommendations for desktop */}
+        <div className="mt-6 lg:mt-0 lg:w-4/12 lg:flex lg:flex-col">
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-4 md:p-6 mb-6 shadow-md lg:sticky lg:top-4">
+            <h2 className="text-lg font-semibold mb-3 text-blue-800">Nutritional Tips</h2>
+            <div className="space-y-4">
+              <div className="bg-white p-3 rounded-md shadow-sm">
+                <h3 className="text-sm font-medium text-gray-700 mb-1">Stay Hydrated</h3>
+                <p className="text-xs text-gray-500">Remember to drink water throughout the day to maintain optimal hydration.</p>
+              </div>
+              <div className="bg-white p-3 rounded-md shadow-sm">
+                <h3 className="text-sm font-medium text-gray-700 mb-1">Protein Intake</h3>
+                <p className="text-xs text-gray-500">Aim for 0.8-1g of protein per pound of body weight for muscle recovery.</p>
+              </div>
+              <div className="bg-white p-3 rounded-md shadow-sm">
+                <h3 className="text-sm font-medium text-gray-700 mb-1">Balanced Meals</h3>
+                <p className="text-xs text-gray-500">Include protein, complex carbs, and healthy fats in each meal for balanced nutrition.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );

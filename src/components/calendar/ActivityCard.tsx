@@ -66,16 +66,16 @@ const ActivityCard = ({ activity }: ActivityCardProps) => {
   const duration = activity.duration ? `${activity.duration} min` : '';
   
   return (
-    <Link to={`/workout/${activity.id}`} className="block group transition-all duration-200 hover:scale-[1.01]">
+    <Link to={`/workout/${activity.id}`} className="block group transition-all duration-200 hover:scale-[1.01] md:hover:scale-[1.005]">
       <div className={`
         rounded-lg overflow-hidden border shadow-sm
         ${typeStyles.bg} border-gray-200
         transition-all duration-200
-        hover:shadow-md
+        hover:shadow-md md:hover:shadow-lg
       `}>
         <div className="flex flex-col sm:flex-row">
           {/* Time column */}
-          <div className="p-4 text-sm flex flex-row sm:flex-col justify-between sm:justify-start sm:w-24 border-b sm:border-b-0 sm:border-r border-gray-200">
+          <div className="p-4 text-sm flex flex-row sm:flex-col justify-between sm:justify-start sm:w-24 md:w-28 lg:w-32 border-b sm:border-b-0 sm:border-r border-gray-200">
             <div>
               <div className="font-semibold">{activity.startTime}</div>
               <div className="text-gray-500">{activity.endTime}</div>
@@ -98,7 +98,7 @@ const ActivityCard = ({ activity }: ActivityCardProps) => {
           
           {/* Content column */}
           <div className={`
-            flex-1 p-4 border-l-4
+            flex-1 p-4 md:p-5 lg:p-6 border-l-4
             ${typeStyles.border}
             relative
           `}>

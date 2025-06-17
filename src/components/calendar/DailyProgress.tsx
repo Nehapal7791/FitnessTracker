@@ -62,7 +62,7 @@ const DailyProgress = ({ date }: DailyProgressProps) => {
   const waterPercent = (progressData.water.consumed / progressData.water.target) * 100;
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden lg:sticky lg:top-4">
       <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <h3 className="font-medium text-gray-800">Daily Progress</h3>
@@ -70,7 +70,7 @@ const DailyProgress = ({ date }: DailyProgressProps) => {
         </div>
       </div>
       
-      <div className="p-4 space-y-6">
+      <div className="p-4 md:p-5 lg:p-6 space-y-6">
         {/* Workout Progress */}
         <div>
           <div className="flex justify-between items-center mb-2">
@@ -87,7 +87,7 @@ const DailyProgress = ({ date }: DailyProgressProps) => {
             ></div>
           </div>
           
-          <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
+          <div className="space-y-2 max-h-40 md:max-h-48 lg:max-h-56 overflow-y-auto pr-1">
             {progressData.workout.exercises.map(exercise => (
               <div 
                 key={exercise.id} 
@@ -122,7 +122,7 @@ const DailyProgress = ({ date }: DailyProgressProps) => {
             ></div>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-2 md:space-y-3">
             {progressData.diet.meals.map(meal => (
               <div 
                 key={meal.id} 
@@ -165,7 +165,7 @@ const DailyProgress = ({ date }: DailyProgressProps) => {
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="flex flex-wrap gap-2 md:gap-3 mt-3">
             {progressData.water.schedule.map((glass, idx) => (
               <button 
                 key={glass.id}
